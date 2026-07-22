@@ -2,7 +2,8 @@
 
 list=(a b c d)
 
-tty_find_last() {
+tty_find_last()
+{
     list_length=${#list[@]}
 
     if [ "$list_length" -eq 0 ]; then
