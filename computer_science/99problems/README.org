@@ -1,4 +1,4 @@
-#+TITLE: ttybitnik/lab.99-problems
+#+TITLE: lab.studies/99-problems
 #+AUTHOR: Vinícius Moraes
 #+EMAIL: vinicius.moraes@eternodevir.com
 #+OPTIONS: num:nil
