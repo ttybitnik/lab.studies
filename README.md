@@ -8,8 +8,8 @@ A collection of laboratory studies bridging computational knowledge and experime
 > study of the structure of knowledge from an imperative point of view,
 > as opposed to the more declarative point of view taken by classical
 > mathematical subjects. Mathematics provides a framework for dealing
-> precisely with notions of 'what is.' Computation provides a framework
-> for dealing precisely with notions of 'how to.'
+> precisely with notions of 'what is'. Computation provides a framework
+> for dealing precisely with notions of 'how to'.
 
 > — Gerald Jay Sussman & Harold Abelson in [SICP](https://mitpress.mit.edu/sicp).
 
@@ -23,9 +23,9 @@ A collection of laboratory studies bridging computational knowledge and experime
 | SICP (TBA)                    | Computer Science | Exercise solutions for Sussman & Abelson's "Structure and Interpretation of Computer Programs" book.     |
 | [DCC200][dcc200-uri]          | Computer Science | Exercise solutions for Algorithms class covering sorting, searching, recursion, and complexity analysis. |
 
-[99problems-uri]: computer_science/99problems/README.org
+[99problems-uri]: computer_science/99problems/
 [leetcode-uri]: #
-[dcc200-uri]: computer_science/DCC200/README.md
+[dcc200-uri]: computer_science/DCC200/
 [sicp-uri]: #
 
 ## License
