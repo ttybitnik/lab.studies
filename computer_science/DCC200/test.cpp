@@ -119,15 +119,16 @@ TEST_CASE("Module 01: Pointers") {
 
     // 01-07.cpp
     {
-        int vet_odd[5]  = {1, 2, 3, 4, 5};
-        int vet_even[4] = {10, 20, 30, 40};
+		int vet_odd[5]  = {1, 2, 3, 4, 5};
+		int vet_even[4] = {10, 20, 30, 40};
 
-        reverse(vet_odd, 5);
-        reverse(vet_even, 4);
+		reverse(vet_odd, 5);
+		reverse(vet_even, 4);
 
-        CHECK(vet_odd[0] == 5);
-        CHECK(vet_odd[4] == 1);
-        CHECK(vet_even[0] == 40);
-        CHECK(vet_even[3] == 10);
+		CHECK(vet_odd[0] == 5);
+		CHECK(vet_odd[4] == 1);
+		CHECK(vet_odd[2] == 3);
+		CHECK(vet_even[0] == 40);
+		CHECK(vet_even[3] == 10);
     }
 }
