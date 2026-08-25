@@ -34,6 +34,9 @@ run: $(TARGET)
 interactive-%: $(SRC_DIR)/%.cpp
 	$(CXX) $(CXXOPTS) -DINTERACTIVE -o $@ $<
 
+interactive-01-07: $(SRC_DIR)/01-07.cpp $(OBJ_DIR)/01-04.o
+	$(CXX) $(CXXOPTS) -DINTERACTIVE $(SRC_DIR)/01-07.cpp $(OBJ_DIR)/01-04.o -o $@
+
 clean-interactive:
 	rm -f interactive-*
 

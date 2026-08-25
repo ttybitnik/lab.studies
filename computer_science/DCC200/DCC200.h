@@ -7,6 +7,7 @@
 #include <cmath>
 #include <sstream>
 
+// 00 - C++ Revision
 float readAndCalculateAverage(int n);
 float readVectorAndCalculateAverage(int n, float arr[]);
 int findCharInString(std::string str, char ch);
@@ -18,5 +19,11 @@ float calculateEuler();
 void printArithmeticTable();
 float largestEvenValue(int n, float vet[]);
 void readNegatives(int n, float vet[]);
+
+// 01 - Pointers
+void swap(int* a, int* b);
+void division(int num, int div, int* q, int* r);
+bool countAndClassifyNumbers(int n, int vet[], int* even, int* odd, int* negatives);
+void reverse(int vet[], int n);
 
 #endif // DCC200_H
