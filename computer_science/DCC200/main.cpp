@@ -13,11 +13,11 @@ auto withInput(const string& input, Func func)
     return result;
 }
 
-TEST_CASE("Module 00: Basic I/O and Logic") {
+TEST_CASE("Module 00: C++ Revision") {
     // 00-01.cpp
 	// 00-02.cpp
     {
-        double avg = withInput("2 4 6", []() { return readAndCalculateAverage(3); });
+        float avg = withInput("2 4 6", []() { return readAndCalculateAverage(3); });
         CHECK(avg == doctest::Approx(4.0).epsilon(0.001));
     }
 
@@ -85,7 +85,7 @@ TEST_CASE("Module 00: Basic I/O and Logic") {
     }
 }
 
-TEST_CASE("Module 01: Pointers and Arrays") {
+TEST_CASE("Module 01: Pointers") {
     // 01-01.cpp
     // 01-02.cpp
     // 01-03.cpp
@@ -109,12 +109,12 @@ TEST_CASE("Module 01: Pointers and Arrays") {
     {
         int vet[] = {1, -2, 3, 4, -5};
         int even = 0, odd = 0, negatives = 0;
-        bool hasNeg = countAndClassifyNumbers(5, vet, &even, &odd, &negatives);
+        bool res = countAndClassifyNumbers(5, vet, &even, &odd, &negatives);
 
         CHECK(even == 2);
         CHECK(odd == 3);
         CHECK(negatives == 2);
-        CHECK(hasNeg == true);
+        CHECK(res == true);
     }
 
     // 01-07.cpp
