@@ -8,8 +8,8 @@ Practical assignments and revision exercises for **DCC200**.
 - **`src/`**: Solution files grouped by module prefixes (e.g., `00-01.cpp`, `01-01.cpp`).
 - **`obj/`**: Directory for intermediate compiled object files (`.o`).
 - **`DCC200.h`**: Common headers, helper functions, and macros.
-- **`main.cpp`**: Custom `checks` runner for building and executing validation.
 - **`Makefile`**: Automated build file managing compilation targets.
+- **`test.cpp`**: Custom runner for executing validation.
 
 ## Modules
 
@@ -29,7 +29,7 @@ Practical assignments and revision exercises for **DCC200**.
 
 For testing all function implementations:
 ```bash
-make run
+make test
 ```
 
 For exercises implementing their own `main()`:

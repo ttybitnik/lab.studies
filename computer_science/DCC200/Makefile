@@ -1,14 +1,14 @@
-.PHONY: all clean run interactive clean-interactive setup
+.PHONY: all clean test interactive clean-interactive setup
 
 CXX = g++
 CXXOPTS = -std=c++17 -Wall -I.
-TARGET = checks
+TARGET = test_runner
 
 SRC_DIR = src
 OBJ_DIR = obj
 
-SRCS = $(wildcard $(SRC_DIR)/*.cpp) main.cpp
-OBJS = $(OBJ_DIR)/main.o $(patsubst $(SRC_DIR)/%.cpp, $(OBJ_DIR)/%.o, $(wildcard $(SRC_DIR)/*.cpp))
+SRCS = $(wildcard $(SRC_DIR)/*.cpp) test.cpp
+OBJS = $(OBJ_DIR)/test.o $(patsubst $(SRC_DIR)/%.cpp, $(OBJ_DIR)/%.o, $(wildcard $(SRC_DIR)/*.cpp))
 INTERACTIVE_FILES = $(shell grep -l "^#ifdef INTERACTIVE" $(SRC_DIR)/*.cpp 2>/dev/null | sed 's|$(SRC_DIR)/||')
 
 all: setup $(TARGET)
@@ -16,7 +16,7 @@ all: setup $(TARGET)
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp | $(OBJ_DIR)
 	$(CXX) $(CXXOPTS) -c $< -o $@
 
-$(OBJ_DIR)/main.o: main.cpp | $(OBJ_DIR)
+$(OBJ_DIR)/test.o: test.cpp | $(OBJ_DIR)
 	$(CXX) $(CXXOPTS) -c $< -o $@
 
 $(TARGET): $(OBJS)
@@ -28,7 +28,7 @@ clean:
 setup:
 	mkdir -p $(SRC_DIR) $(OBJ_DIR)
 
-run: $(TARGET)
+test: $(TARGET)
 	./$(TARGET)
 
 interactive-%: $(SRC_DIR)/%.cpp

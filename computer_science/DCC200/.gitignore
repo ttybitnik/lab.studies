@@ -1,2 +1,2 @@
 *.o
-checks
+test_runner
