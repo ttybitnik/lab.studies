@@ -1,92 +1,133 @@
+#define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include "DCC200.h"
+#include "doctest.h"
 using namespace std;
-
-struct TestResults {
-    int passed = 0;
-    int failed = 0;
-} g_results;
-
-#define TEST(expr) \
-do { \
-cout << #expr << " ... "; \
-if (expr) { \
-cout << "PASS" << endl; \
-g_results.passed++; \
-} else { \
-cout << "FAIL" << endl; \
-g_results.failed++; \
-} \
-} while(0)
 
 template<typename Func>
 auto withInput(const string& input, Func func)
 {
-	stringstream ss(input);
-	streambuf* old = cin.rdbuf(ss.rdbuf());
-	auto result = func();
-	cin.rdbuf(old);
-	return result;
+    stringstream ss(input);
+    streambuf* old = cin.rdbuf(ss.rdbuf());
+    auto result = func();
+    cin.rdbuf(old);
+    return result;
 }
 
-int main()
-{
-	// 00-1.cpp
-	// 00-2.cpp
-    TEST(abs(withInput("2 4 6", []()
-		{
-			return readAndCalculateAverage(3);
-		}) - 4.0) < 0.001);
+TEST_CASE("Module 00: Basic I/O and Logic") {
+    // 00-01.cpp
+	// 00-02.cpp
+    {
+        double avg = withInput("2 4 6", []() { return readAndCalculateAverage(3); });
+        CHECK(avg == doctest::Approx(4.0).epsilon(0.001));
+    }
 
-	// 00-3.cpp
-    TEST(abs(withInput("2 4 6", []()
-		{
-			float vet[3];
-			return readVectorAndCalculateAverage(3, vet);
-		}) - 4.0) < 0.001);
+    // 00-03.cpp
+    {
+        float avg = withInput("2 4 6", []() {
+            float vet[3];
+            return readVectorAndCalculateAverage(3, vet);
+        });
+        CHECK(avg == doctest::Approx(4.0).epsilon(0.001));
+    }
 
-	// 00-4.cpp
-	TEST(findCharInString("hello, world", 'o') == 4);
-	TEST(findCharInString("hello, world", 'z') == -1);
+    // 00-04.cpp
+    {
+        CHECK(findCharInString("hello, world", 'o') == 4);
+        CHECK(findCharInString("hello, world", 'z') == -1);
+    }
 
-	// 00-5.cpp
-	TEST(isPrime(17) == true);
-	TEST(isPrime(8) == false);
-	TEST(isPrime(1) == false);
+    // 00-05.cpp
+    {
+        CHECK(isPrime(17) == true);
+        CHECK(isPrime(8) == false);
+        CHECK(isPrime(1) == false);
+    }
 
-	// 00-6.cpp
-	// 00-7.cpp
-	TEST(factorial(5) == 120);
-	TEST(factorial(1) == 1);
+    // 00-06.cpp
+	// 00-07.cpp
+    {
+        CHECK(factorial(5) == 120);
+        CHECK(factorial(1) == 1);
+    }
 
-	// 00-8.cpp
-	TEST(sumPowers(2, 3) == 15);
-	TEST(sumPowers(5, 0) == 1);
+    // 00-08.cpp
+    {
+        CHECK(sumPowers(2, 3) == 15);
+        CHECK(sumPowers(5, 0) == 1);
+    }
 
-	// 00-9.cpp
-	TEST(abs(calculatePi(1) - 4.0) < 0.001);
-	TEST(abs(calculatePi(1000) - 3.14059) < 0.001);
+    // 00-09.cpp
+    {
+        CHECK(calculatePi(1) == doctest::Approx(4.0).epsilon(0.001));
+        CHECK(calculatePi(1000) == doctest::Approx(3.14059).epsilon(0.001));
+    }
 
-	// 00-10.cpp
-	TEST(abs(withInput("0.001", []()
-		{
-			return calculateEuler();
-		}) - 2.71828) < 0.001);
+    // 00-10.cpp
+    {
+        double e = withInput("0.001", []() { return calculateEuler(); });
+        CHECK(e == doctest::Approx(2.71828).epsilon(0.001));
+    }
 
-	// 00-11.cpp
-	// 00-12.cpp
-	TEST(largestEvenValue(5, (float[]){1.0, 4.0, 2.0, 9.0, 8.0}) == 8.0);
+    // 00-12.cpp
+    {
+        float vals[] = {1.0f, 4.0f, 2.0f, 9.0f, 8.0f};
+        CHECK(largestEvenValue(5, vals) == 8.0f);
+    }
 
-	// 00-13.cpp
-	TEST(withInput("5.0 -1.0 -2.0", []()
-		{
-			float vet[2];
-			readNegatives(2, vet);
-			return vet[0] == -1.0 && vet[1] == -2.0;
-		}));
+    // 00-13.cpp
+    {
+        bool res = withInput("5.0 -1.0 -2.0", []() {
+            float vet[2];
+            readNegatives(2, vet);
+            return vet[0] == -1.0f && vet[1] == -2.0f;
+        });
+        CHECK(res == true);
+    }
+}
 
-	int total = g_results.passed + g_results.failed;
-	cout << "PASS:\t" << g_results.passed << "/" << total << endl;
-	cout << "FAIL:\t" << g_results.failed << "/" << total << endl;
+TEST_CASE("Module 01: Pointers and Arrays") {
+    // 01-01.cpp
+    // 01-02.cpp
+    // 01-03.cpp
+    // 01-04.cpp
+    {
+        int a = 10, b = 20;
+        swap(&a, &b);
+        CHECK(a == 20);
+        CHECK(b == 10);
+    }
 
-	return 0;
+    // 01-05.cpp
+    {
+        int q = 0, r = 0;
+        division(17, 5, &q, &r);
+        CHECK(q == 3);
+        CHECK(r == 2);
+    }
+
+    // 01-06.cpp
+    {
+        int vet[] = {1, -2, 3, 4, -5};
+        int even = 0, odd = 0, negatives = 0;
+        bool hasNeg = countAndClassifyNumbers(5, vet, &even, &odd, &negatives);
+
+        CHECK(even == 2);
+        CHECK(odd == 3);
+        CHECK(negatives == 2);
+        CHECK(hasNeg == true);
+    }
+
+    // 01-07.cpp
+    {
+        int vet_odd[5]  = {1, 2, 3, 4, 5};
+        int vet_even[4] = {10, 20, 30, 40};
+
+        reverse(vet_odd, 5);
+        reverse(vet_even, 4);
+
+        CHECK(vet_odd[0] == 5);
+        CHECK(vet_odd[4] == 1);
+        CHECK(vet_even[0] == 40);
+        CHECK(vet_even[3] == 10);
+    }
 }
