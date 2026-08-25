@@ -3,9 +3,9 @@ using namespace std;
 
 void reverse(int vet[], int n)
 {
-	int j = n - 1;
 	int i = 0;
-	while (j - i != -1 && i != j) {
+	int j = n - 1;
+	while (i < j) {
 		swap(vet+i, vet+j);
 		j--;
 		i++;
