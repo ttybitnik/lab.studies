@@ -20,7 +20,7 @@ int main()
 	cout << "\na: " << a << "\nb: " << b << "\nc: " << c << endl;
 
 	pti = &a;
-	*pti = vet[0] + 99;
+	*pti = v[0] + 99;
 
 	v[0] = *pti1 + *pti2;
 	v[1] = *pti2;
