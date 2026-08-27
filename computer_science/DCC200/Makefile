@@ -1,7 +1,8 @@
 .PHONY: all clean test interactive clean-interactive setup
 
 CXX = g++
-CXXOPTS = -std=c++17 -Wall -I.
+CXXOPTS = -std=c++17 -I. -g -Wall -fsanitize=address,undefined -O0 -fno-omit-frame-pointer
+
 TARGET = test_runner
 
 SRC_DIR = src
