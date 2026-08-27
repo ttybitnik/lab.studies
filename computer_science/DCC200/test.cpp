@@ -110,7 +110,6 @@ TEST_CASE("Module 01: Pointers") {
         int vet[] = {1, -2, 3, 4, -5};
         int even = 0, odd = 0, negatives = 0;
         bool res = countAndClassifyNumbers(5, vet, &even, &odd, &negatives);
-
         CHECK(even == 2);
         CHECK(odd == 3);
         CHECK(negatives == 2);
@@ -121,10 +120,8 @@ TEST_CASE("Module 01: Pointers") {
     {
 		int vet_odd[5]  = {1, 2, 3, 4, 5};
 		int vet_even[4] = {10, 20, 30, 40};
-
 		reverse(vet_odd, 5);
 		reverse(vet_even, 4);
-
 		CHECK(vet_odd[0] == 5);
 		CHECK(vet_odd[4] == 1);
 		CHECK(vet_odd[2] == 3);
