@@ -14,6 +14,19 @@ auto withInput(const string& input, Func func)
     return result;
 }
 
+template<typename Func>
+string withIO(const string& input, Func func)
+{
+    stringstream ss(input);
+    streambuf *oldCin = cin.rdbuf(ss.rdbuf());
+    ostringstream oss;
+    streambuf *oldCout = cout.rdbuf(oss.rdbuf());
+    func();
+    cin.rdbuf(oldCin);
+    cout.rdbuf(oldCout);
+    return oss.str();
+}
+
 TEST_CASE("Module 00: C++ Revision") {
     // 00-01.cpp
 	// 00-02.cpp
@@ -223,5 +236,22 @@ TEST_CASE("Module 02: Dynamic Allocation") {
         CHECK(sub[1] == 30);
         CHECK(sub[2] == 40);
         delete[] sub;
+    }
+
+	// 02-10.cpp
+    {
+        int n = 5;
+        int *arr = new int[5]{10, 20, 30, 40, 50};
+        int sub_n;
+        int *sub_arr = extract(&n, &arr, 1, 3, &sub_n);
+        CHECK(sub_n == 3);
+        CHECK(sub_arr[0] == 20);
+        CHECK(sub_arr[1] == 30);
+        CHECK(sub_arr[2] == 40);
+        CHECK(n == 2);
+        CHECK(arr[0] == 10);
+        CHECK(arr[1] == 50);
+        delete[] sub_arr;
+        delete[] arr;
     }
 }

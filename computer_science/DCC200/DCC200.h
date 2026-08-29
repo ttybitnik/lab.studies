@@ -27,12 +27,12 @@ void reverse(int arr[], int n);
 
 // 02 - Dynamic Allocation
 float dotProduct(int n, float x[], float y[]);
-int *evenIndexes(int arr[], int n);
-int *resize(int arr[], int n, int n_new);
+int *evenIndexes(int vet[], int n);
+int *resize(int vet[], int n, int n_new);
 void readValues(int n, int *sum, float *average, int *greatest, int *lowest);
 int *intercalate(int n, int v1[], int v2[]);
 void aboveAverage(int n);
-int *subvector(int n, int *arr, int start, int end, int *sub_n);
-int *extract(int *n, int **arr, int start, int end, int *sub_n);
+int *subvector(int n, int *vet, int start, int end, int *sub_n);
+int *extract(int *n, int **vet, int start, int end, int *sub_n);
 
 #endif // DCC200_H
