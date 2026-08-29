@@ -16,18 +16,23 @@ float sumPowers(float x, int n);
 float calculatePi(int n);
 float calculateEuler();
 void printArithmeticTable();
-float largestEvenValue(int n, float vet[]);
-void readNegatives(int n, float vet[]);
+float largestEvenValue(int n, float arr[]);
+void readNegatives(int n, float arr[]);
 
 // 01 - Pointers
 void swap(int *a, int *b);
 void division(int num, int div, int *q, int *r);
-bool countAndClassifyNumbers(int n, int vet[], int *even, int *odd, int *negatives);
-void reverse(int vet[], int n);
+bool countAndClassifyNumbers(int n, int arr[], int *even, int *odd, int *negatives);
+void reverse(int arr[], int n);
 
 // 02 - Dynamic Allocation
 float dotProduct(int n, float x[], float y[]);
-int *evenIndexes(int vet[], int n);
-int *resize(int vet[], int n, int n_new);
+int *evenIndexes(int arr[], int n);
+int *resize(int arr[], int n, int n_new);
+void readValues(int n, int *sum, float *average, int *greatest, int *lowest);
+int *intercalate(int n, int v1[], int v2[]);
+void aboveAverage(int n);
+int *subvector(int n, int *arr, int start, int end, int *sub_n);
+int *extract(int *n, int **arr, int start, int end, int *sub_n);
 
 #endif // DCC200_H

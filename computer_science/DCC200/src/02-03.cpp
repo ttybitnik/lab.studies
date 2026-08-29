@@ -1,17 +1,17 @@
 #include "DCC200.h"
 using namespace std;
 
-int *evenIndexes(int vet[], int n)
+int *evenIndexes(int arr[], int n)
 {
-	int *n_vet = new int[(n + 1) / 2 ];
+	int *n_arr = new int[(n + 1) / 2 ];
 
 	int n_i = 0;
 	for (int i = 0; i < n; i += 2) {
-		n_vet[n_i] = vet[i];
+		n_arr[n_i] = arr[i];
 		n_i++;
 	}
 
-	return n_vet;
+	return n_arr;
 }
 
 #ifdef INTERACTIVE
@@ -21,21 +21,21 @@ int main()
 	cout << "Enter vector size: ";
 	cin >> n;
 
-	int *vet = new int[n];
+	int *arr = new int[n];
 
 	cout << "Enter vector data: ";
 	for (int i = 0; i < n; i++)
-		cin >> vet[i];
+		cin >> arr[i];
 
-	int *vet_even = evenIndexes(vet, n);
+	int *arr_even = evenIndexes(arr, n);
 
 	for (int i = 0; i < (n + 1) / 2; i++)
-		cout << vet_even[i] << " ";
+		cout << arr_even[i] << " ";
 
 	cout << endl;
 
-	delete[] vet;
-	delete[] vet_even;
+	delete[] arr;
+	delete[] arr_even;
 	return 0;
 }
 #endif // INTERACTIVE

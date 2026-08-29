@@ -25,8 +25,8 @@ TEST_CASE("Module 00: C++ Revision") {
     // 00-03.cpp
     {
         float avg = withInput("2 4 6", []() {
-            float vet[3];
-            return readVectorAndCalculateAverage(3, vet);
+            float arr[3];
+            return readVectorAndCalculateAverage(3, arr);
         });
         CHECK(avg == doctest::Approx(4.0).epsilon(0.001));
     }
@@ -78,9 +78,9 @@ TEST_CASE("Module 00: C++ Revision") {
     // 00-13.cpp
     {
         bool res = withInput("5.0 -1.0 -2.0", []() {
-            float vet[2];
-            readNegatives(2, vet);
-            return vet[0] == -1.0f && vet[1] == -2.0f;
+            float arr[2];
+            readNegatives(2, arr);
+            return arr[0] == -1.0f && arr[1] == -2.0f;
         });
         CHECK(res == true);
     }
@@ -108,9 +108,9 @@ TEST_CASE("Module 01: Pointers") {
 
     // 01-06.cpp
     {
-        int vet[] = {1, -2, 3, 4, -5};
+        int arr[] = {1, -2, 3, 4, -5};
         int even = 0, odd = 0, negatives = 0;
-        bool res = countAndClassifyNumbers(5, vet, &even, &odd, &negatives);
+        bool res = countAndClassifyNumbers(5, arr, &even, &odd, &negatives);
         CHECK(even == 2);
         CHECK(odd == 3);
         CHECK(negatives == 2);
@@ -119,15 +119,15 @@ TEST_CASE("Module 01: Pointers") {
 
     // 01-07.cpp
     {
-		int vet_odd[5]  = {1, 2, 3, 4, 5};
-		int vet_even[4] = {10, 20, 30, 40};
-		reverse(vet_odd, 5);
-		reverse(vet_even, 4);
-		CHECK(vet_odd[0] == 5);
-		CHECK(vet_odd[4] == 1);
-		CHECK(vet_odd[2] == 3);
-		CHECK(vet_even[0] == 40);
-		CHECK(vet_even[3] == 10);
+		int arr_odd[5]  = {1, 2, 3, 4, 5};
+		int arr_even[4] = {10, 20, 30, 40};
+		reverse(arr_odd, 5);
+		reverse(arr_even, 4);
+		CHECK(arr_odd[0] == 5);
+		CHECK(arr_odd[4] == 1);
+		CHECK(arr_odd[2] == 3);
+		CHECK(arr_even[0] == 40);
+		CHECK(arr_even[3] == 10);
     }
 }
 
@@ -143,10 +143,10 @@ TEST_CASE("Module 02: Dynamic Allocation") {
 
     // 02-03.cpp
     {
-        int vet_odd[5]  = {1, 2, 3, 4, 5};
-        int vet_even[4] = {10, 20, 30, 40};
-        int *res_odd = evenIndexes(vet_odd, 5);
-        int *res_even = evenIndexes(vet_even, 4);
+        int arr_odd[5]  = {1, 2, 3, 4, 5};
+        int arr_even[4] = {10, 20, 30, 40};
+        int *res_odd = evenIndexes(arr_odd, 5);
+        int *res_even = evenIndexes(arr_even, 4);
         CHECK(res_odd[0] == 1);
         CHECK(res_odd[1] == 3);
         CHECK(res_odd[2] == 5);
@@ -158,23 +158,70 @@ TEST_CASE("Module 02: Dynamic Allocation") {
 
 	// 02-04.cpp
     {
-        int vet[3] = {10, 20, 30};
-        int *expanded = resize(vet, 3, 5);
+        int arr[3] = {10, 20, 30};
+        int *expanded = resize(arr, 3, 5);
         CHECK(expanded[0] == 10);
         CHECK(expanded[1] == 20);
         CHECK(expanded[2] == 30);
         CHECK(expanded[3] == 0);
         CHECK(expanded[4] == 0);
         delete[] expanded;
-        int *shrunk = resize(vet, 3, 2);
-        CHECK(shrunk == vet);
+        int *shrunk = resize(arr, 3, 2);
+        CHECK(shrunk == arr);
         CHECK(shrunk[0] == 10);
         CHECK(shrunk[1] == 20);
-        int *same = resize(vet, 3, 3);
-        CHECK(same == vet);
+        int *same = resize(arr, 3, 3);
+        CHECK(same == arr);
         CHECK(same[0] == 10);
         CHECK(same[2] == 30);
     }
 
 	// 02-05.cpp
+	// 02-06.cpp
+    {
+        int sum = 0, greatest = 0, lowest = 0, n = 0;
+        float average = 0.0;
+        bool res = withInput("4 10 5 20 -2", [&]() {
+            readValues(n, &sum, &average, &greatest, &lowest);
+            return true;
+        });
+        CHECK(res == true);
+        CHECK(sum == 33);
+        CHECK(average == doctest::Approx(8.25).epsilon(0.001));
+        CHECK(greatest == 20);
+        CHECK(lowest == -2);
+    }
+
+	// 02-07.cpp
+    {
+        int v1[3] = {1, 2, 3};
+        int v2[3] = {10, 20, 30};
+        int *res = intercalate(3, v1, v2);
+        CHECK(res[0] == 1);
+        CHECK(res[1] == 10);
+        CHECK(res[2] == 2);
+        CHECK(res[3] == 20);
+        CHECK(res[4] == 3);
+        CHECK(res[5] == 30);
+        delete[] res;
+    }
+
+	// 02-08.cpp
+    {
+        string output = withIO("10 20 30 40 50", []() { aboveAverage(5); });
+        CHECK(output.find("Above average: 2") != string::npos);
+        CHECK(output.find("40 50") != string::npos);
+    }
+
+	// 02-09.cpp
+    {
+        int arr[5] = {10, 20, 30, 40, 50};
+        int sub_n;
+        int *sub = subvector(5, arr, 1, 3, &sub_n);
+        CHECK(sub_n == 3);
+        CHECK(sub[0] == 20);
+        CHECK(sub[1] == 30);
+        CHECK(sub[2] == 40);
+        delete[] sub;
+    }
 }

@@ -17,21 +17,21 @@ int main()
 	cout << "Enter vectors size: ";
 	cin >> n;
 
-	float *vet1 = new float[n];
-	float *vet2 = new float[n];
+	float *arr1 = new float[n];
+	float *arr2 = new float[n];
 
 	cout << "Enter 1st vector data: ";
 	for (int i = 0; i < n; i++)
-		cin >> vet1[i];
+		cin >> arr1[i];
 
 	cout << "Enter 2nd vector data: ";
 	for (int i = 0; i < n; i++)
-		cin >> vet2[i];
+		cin >> arr2[i];
 
-	cout << "Dot product: " << dotProduct(n, vet1, vet2) << endl;
+	cout << "Dot product: " << dotProduct(n, arr1, arr2) << endl;
 
-	delete[] vet1;
-	delete[] vet2;
+	delete[] arr1;
+	delete[] arr2;
 	return 0;
 }
 #endif // INTERACTIVE

@@ -6,17 +6,17 @@ int main()
 {
 	int n;
 	cin >> n;
-	int *vet = new int[n];
+	int *arr = new int[n];
 
 	float sum = 0;
 	for (int i = 0; i < n; i++) {
-		cin >> vet[i];
-		sum += vet[i];
+		cin >> arr[i];
+		sum += arr[i];
 	}
 
 	cout << "Average: " << sum / n << endl;
 
-	delete[] vet;
+	delete[] arr;
 	return 0;
 }
 #endif // INTERACTIVE
