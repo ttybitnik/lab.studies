@@ -1,6 +1,7 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include "DCC200.h"
 #include "doctest.h"
+#include <sstream>
 using namespace std;
 
 template<typename Func>
@@ -128,4 +129,52 @@ TEST_CASE("Module 01: Pointers") {
 		CHECK(vet_even[0] == 40);
 		CHECK(vet_even[3] == 10);
     }
+}
+
+TEST_CASE("Module 02: Dynamic Allocation") {
+    // 02-01.cpp
+    // 02-02.cpp
+    {
+        float x[3] = {1.0, 2.0, 3.0};
+        float y[3] = {4.0, 5.0, 6.0};
+        float result = dotProduct(3, x, y);
+        CHECK(result == 32.0);
+    }
+
+    // 02-03.cpp
+    {
+        int vet_odd[5]  = {1, 2, 3, 4, 5};
+        int vet_even[4] = {10, 20, 30, 40};
+        int* res_odd = evenIndexes(vet_odd, 5);
+        int* res_even = evenIndexes(vet_even, 4);
+        CHECK(res_odd[0] == 1);
+        CHECK(res_odd[1] == 3);
+        CHECK(res_odd[2] == 5);
+        CHECK(res_even[0] == 10);
+        CHECK(res_even[1] == 30);
+        delete[] res_odd;
+        delete[] res_even;
+    }
+
+	// 02-04.cpp
+    {
+        int vet[3] = {10, 20, 30};
+        int* expanded = resize(vet, 3, 5);
+        CHECK(expanded[0] == 10);
+        CHECK(expanded[1] == 20);
+        CHECK(expanded[2] == 30);
+        CHECK(expanded[3] == 0);
+        CHECK(expanded[4] == 0);
+        delete[] expanded;
+        int* shrunk = resize(vet, 3, 2);
+        CHECK(shrunk == vet);
+        CHECK(shrunk[0] == 10);
+        CHECK(shrunk[1] == 20);
+        int* same = resize(vet, 3, 3);
+        CHECK(same == vet);
+        CHECK(same[0] == 10);
+        CHECK(same[2] == 30);
+    }
+
+	// 02-05.cpp
 }

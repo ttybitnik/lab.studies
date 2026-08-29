@@ -5,7 +5,6 @@
 #include <iomanip>
 #include <string>
 #include <cmath>
-#include <sstream>
 
 // 00 - C++ Revision
 float readAndCalculateAverage(int n);
@@ -25,5 +24,10 @@ void swap(int* a, int* b);
 void division(int num, int div, int* q, int* r);
 bool countAndClassifyNumbers(int n, int vet[], int* even, int* odd, int* negatives);
 void reverse(int vet[], int n);
+
+// 02 - Dynamic Allocation
+float dotProduct(int n, float x[], float y[]);
+int* evenIndexes(int vet[], int n);
+int* resize(int vet[], int n, int n_new);
 
 #endif // DCC200_H
