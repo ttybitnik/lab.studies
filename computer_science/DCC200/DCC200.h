@@ -1,10 +1,10 @@
 #ifndef DCC200_H
 #define DCC200_H
 
-#include <iostream>
-#include <iomanip>
-#include <string>
 #include <cmath>
+#include <iomanip>
+#include <iostream>
+#include <string>
 
 // 00 - C++ Revision
 float readAndCalculateAverage(int n);
