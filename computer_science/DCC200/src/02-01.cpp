@@ -19,4 +19,4 @@ int main()
 	delete[] vet;
 	return 0;
 }
-#endif
+#endif // INTERACTIVE

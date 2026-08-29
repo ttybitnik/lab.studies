@@ -45,4 +45,4 @@ int main()
 	if (n_new > n) delete[] n_vet;
 	return 0;
 }
-#endif
+#endif // INTERACTIVE

@@ -34,4 +34,4 @@ int main()
 	delete[] vet2;
 	return 0;
 }
-#endif
+#endif // INTERACTIVE

@@ -28,4 +28,4 @@ int main()
         delete[] mat[i];
 	delete[] mat;
 }
-#endif
+#endif // INTERACTIVE

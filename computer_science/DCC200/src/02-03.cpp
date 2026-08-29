@@ -38,4 +38,4 @@ int main()
 	delete[] vet_even;
 	return 0;
 }
-#endif
+#endif // INTERACTIVE
