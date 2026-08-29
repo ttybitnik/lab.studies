@@ -1,7 +1,7 @@
 #include "DCC200.h"
 using namespace std;
 
-bool countAndClassifyNumbers(int n, int vet[], int* even, int* odd, int* negatives)
+bool countAndClassifyNumbers(int n, int vet[], int *even, int *odd, int *negatives)
 {
 	*even = 0;
 	*odd = 0;

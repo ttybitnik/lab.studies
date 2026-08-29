@@ -17,8 +17,8 @@ int main()
 	cout << "Enter vectors size: ";
 	cin >> n;
 
-	float* vet1 = new float[n];
-	float* vet2 = new float[n];
+	float *vet1 = new float[n];
+	float *vet2 = new float[n];
 
 	cout << "Enter 1st vector data: ";
 	for (int i = 0; i < n; i++)

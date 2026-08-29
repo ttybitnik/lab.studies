@@ -8,7 +8,7 @@ int main()
 	cout << "Enter matrix order: ";
 	cin >> n;
 
-	int** mat = new int*[n];
+	int **mat = new int*[n];
 	for (int i = 0; i < n; i++)
         mat[i] = new int[n];
 

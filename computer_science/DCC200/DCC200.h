@@ -20,14 +20,14 @@ float largestEvenValue(int n, float vet[]);
 void readNegatives(int n, float vet[]);
 
 // 01 - Pointers
-void swap(int* a, int* b);
-void division(int num, int div, int* q, int* r);
-bool countAndClassifyNumbers(int n, int vet[], int* even, int* odd, int* negatives);
+void swap(int *a, int *b);
+void division(int num, int div, int *q, int *r);
+bool countAndClassifyNumbers(int n, int vet[], int *even, int *odd, int *negatives);
 void reverse(int vet[], int n);
 
 // 02 - Dynamic Allocation
 float dotProduct(int n, float x[], float y[]);
-int* evenIndexes(int vet[], int n);
-int* resize(int vet[], int n, int n_new);
+int *evenIndexes(int vet[], int n);
+int *resize(int vet[], int n, int n_new);
 
 #endif // DCC200_H

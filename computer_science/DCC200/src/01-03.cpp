@@ -7,15 +7,15 @@ int main()
 	int x = 23;
 	float y = 9.7;
 
-	int* pt1 = &x;
+	int *pt1 = &x;
 	(*pt1)++;
 
-	float* pt2 = &y;
+	float *pt2 = &y;
 	cout << "*pt1 + *pt2: " << *pt1 + *pt2 << endl;
 
 	cout << "pt1 + 4 (16 bytes): " << pt1 + 4 << endl;
 
-	float** pt3 = &pt2;
+	float **pt3 = &pt2;
 
 	(*pt3)++;
 

@@ -1,12 +1,12 @@
 #include "DCC200.h"
 using namespace std;
 
-int* resize(int vet[], int n, int n_new)
+int *resize(int vet[], int n, int n_new)
 {
 	if (n_new <= n)
 		return vet;
 
-	int* n_vet = new int[n_new];
+	int *n_vet = new int[n_new];
 
 	for (int i = 0; i < n_new; i++) {
 		if (i < n)
@@ -25,7 +25,7 @@ int main()
 	cout << "Enter vector size: ";
 	cin >> n;
 
-	int* vet = new int[n];
+	int *vet = new int[n];
 
 	cout << "Enter vector data: ";
 	for (int i = 0; i < n; i++)
@@ -35,7 +35,7 @@ int main()
 	cout << "Enter new vector size: ";
 	cin >> n_new;
 
-	int* n_vet = resize(vet, n, n_new);
+	int *n_vet = resize(vet, n, n_new);
 
 	for (int i = 0; i < n_new; i++)
 		cout << n_vet[i] << " ";

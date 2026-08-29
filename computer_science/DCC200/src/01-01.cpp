@@ -4,7 +4,7 @@ using namespace std;
 #ifdef INTERACTIVE
 int main()
 {
-	int* pt;
+	int *pt;
 	cout << "pt address: " << &pt << endl;
 	int x;
 	cin >> x;

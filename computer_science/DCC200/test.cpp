@@ -8,7 +8,7 @@ template<typename Func>
 auto withInput(const string& input, Func func)
 {
     stringstream ss(input);
-    streambuf* old = cin.rdbuf(ss.rdbuf());
+    streambuf *old = cin.rdbuf(ss.rdbuf());
     auto result = func();
     cin.rdbuf(old);
     return result;
@@ -145,8 +145,8 @@ TEST_CASE("Module 02: Dynamic Allocation") {
     {
         int vet_odd[5]  = {1, 2, 3, 4, 5};
         int vet_even[4] = {10, 20, 30, 40};
-        int* res_odd = evenIndexes(vet_odd, 5);
-        int* res_even = evenIndexes(vet_even, 4);
+        int *res_odd = evenIndexes(vet_odd, 5);
+        int *res_even = evenIndexes(vet_even, 4);
         CHECK(res_odd[0] == 1);
         CHECK(res_odd[1] == 3);
         CHECK(res_odd[2] == 5);
@@ -159,18 +159,18 @@ TEST_CASE("Module 02: Dynamic Allocation") {
 	// 02-04.cpp
     {
         int vet[3] = {10, 20, 30};
-        int* expanded = resize(vet, 3, 5);
+        int *expanded = resize(vet, 3, 5);
         CHECK(expanded[0] == 10);
         CHECK(expanded[1] == 20);
         CHECK(expanded[2] == 30);
         CHECK(expanded[3] == 0);
         CHECK(expanded[4] == 0);
         delete[] expanded;
-        int* shrunk = resize(vet, 3, 2);
+        int *shrunk = resize(vet, 3, 2);
         CHECK(shrunk == vet);
         CHECK(shrunk[0] == 10);
         CHECK(shrunk[1] == 20);
-        int* same = resize(vet, 3, 3);
+        int *same = resize(vet, 3, 3);
         CHECK(same == vet);
         CHECK(same[0] == 10);
         CHECK(same[2] == 30);

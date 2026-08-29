@@ -1,7 +1,7 @@
 #include "DCC200.h"
 using namespace std;
 
-void swap(int* a, int* b)
+void swap(int *a, int *b)
 {
 	int aux = *a;
 	*a = *b;
